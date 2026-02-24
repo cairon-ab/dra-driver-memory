@@ -147,12 +147,12 @@ func findMemoryDeviceInResourceSlice(lh logr.Logger, resourceSlice *resourcev1.R
 
 func matchesByAttributes(lh logr.Logger, attrs map[resourcev1.QualifiedName]resourcev1.DeviceAttribute, size string) bool {
 	lh.Info("inspecting", "attributes", attrs)
-	val, ok := attrs[resourcev1.QualifiedName("resource.kubernetes.io/hugeTLB")]
+	val, ok := attrs[resourcev1.QualifiedName("dra.memory/hugeTLB")]
 	if !ok || val.BoolValue == nil {
 		return false
 	}
 	lh.Info("hugeTLB bool present")
-	val, ok = attrs[resourcev1.QualifiedName("resource.kubernetes.io/pageSize")]
+	val, ok = attrs[resourcev1.QualifiedName("dra.memory/pageSize")]
 	if !ok || val.StringValue == nil || *val.StringValue != size {
 		return false
 	}

@@ -41,9 +41,9 @@ Each memory device exposes the following attributes:
 
 | Attribute | Type | Description |
 |-----------|------|-------------|
-| `resource.kubernetes.io/numaNode` | int | NUMA node where the memory resides |
-| `resource.kubernetes.io/pageSize` | string | Page size (e.g., `4k`, `2m`, `1g`) |
-| `resource.kubernetes.io/hugeTLB` | bool | Whether this is a hugepage resource |
+| `dra.memory/numaNode` | int | NUMA node where the memory resides |
+| `dra.memory/pageSize` | string | Page size (e.g., `4k`, `2m`, `1g`) |
+| `dra.memory/hugeTLB` | bool | Whether this is a hugepage resource |
 
 Compatibility attributes for other DRA drivers are also exposed:
 - `dra.cpu/numaNodeID` - for dra-driver-cpu
