@@ -22,14 +22,13 @@ import (
 	resourceapi "k8s.io/api/resource/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	k8srand "k8s.io/apimachinery/pkg/util/rand"
-	"k8s.io/dynamic-resource-allocation/deviceattribute"
 	"k8s.io/utils/ptr"
 
 	"github.com/ffromani/dra-driver-memory/pkg/types"
 )
 
 const (
-	StandardDeviceAttributePrefix = deviceattribute.StandardDeviceAttributePrefix
+	StandardDeviceAttributePrefix = "dra.memory/"
 )
 
 func MakeAttributes(sp types.Span) map[resourceapi.QualifiedName]resourceapi.DeviceAttribute {

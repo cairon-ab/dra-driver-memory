@@ -370,11 +370,11 @@ type attrInfo struct {
 func makeAttributes(info attrInfo) map[resourceapi.QualifiedName]resourceapi.DeviceAttribute {
 	pNode := ptr.To(info.numaNode)
 	return map[resourceapi.QualifiedName]resourceapi.DeviceAttribute{
-		"resource.kubernetes.io/numaNode": {IntValue: pNode},
-		"resource.kubernetes.io/pageSize": {StringValue: ptr.To(info.sizeName)},
-		"resource.kubernetes.io/hugeTLB":  {BoolValue: ptr.To(info.hugeTLB)},
-		"dra.cpu/numaNodeID":              {IntValue: pNode},
-		"dra.net/numaNode":                {IntValue: pNode},
+		"dra.memory/numaNode": {IntValue: pNode},
+		"dra.memory/pageSize": {StringValue: ptr.To(info.sizeName)},
+		"dra.memory/hugeTLB":  {BoolValue: ptr.To(info.hugeTLB)},
+		"dra.cpu/numaNodeID":  {IntValue: pNode},
+		"dra.net/numaNode":    {IntValue: pNode},
 	}
 }
 
