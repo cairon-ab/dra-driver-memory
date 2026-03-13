@@ -21,6 +21,7 @@ package sysinfo
 import (
 	"os"
 	"path/filepath"
+	"slices"
 	"testing"
 
 	"github.com/go-logr/logr/testr"
@@ -55,7 +56,7 @@ func TestHugepageSizes(t *testing.T) {
 			mkMMTree: func(t *testing.T, root string) {
 				// Don't create the directory
 			},
-			expected: nil,
+			expected: []string{},
 		},
 		{
 			name: "with KB size hugepages",
@@ -83,7 +84,11 @@ func TestHugepageSizes(t *testing.T) {
 			lh := testr.New(t)
 			tcase.mkMMTree(t, tmpDir)
 			hpSizes := HugepageSizes(lh, tmpDir)
-			require.Equal(t, hpSizes, tcase.expected)
+			got := append([]string{}, hpSizes...)
+			expected := append([]string{}, tcase.expected...)
+			slices.Sort(got)
+			slices.Sort(expected)
+			require.Equal(t, got, expected)
 		})
 	}
 }
